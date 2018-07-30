@@ -82,9 +82,9 @@ let filtered = fhir.filter(media);
 Transform dicom to Media resource  
 
 #### Parameters
-* `uint8array` **[Uint8Array]** A Uint8Array typed DICOM
+* `dicomArray` **[Uint8Array]** A Uint8Array typed DICOM
 #### Returns
-* `object` **[Object]** An Object of Media resource
+* `media` **[Object]** An Object of Media resource
 
 **Examples**
 ```javascript
@@ -101,7 +101,7 @@ Create trie using an array of resource components
 
 **Examples**
 ```javascript
-merkle.createTrie(array, cb);
+merkle.createTrie(items, cb);
 ```
 
 ### merkle.proveTrie
@@ -114,7 +114,7 @@ Prove trie using an array of resource components that is used to create the trie
 
 **Examples**
 ```javascript
-merkle.proveTrie(trie, array, cb);
+merkle.proveTrie(trie, items, cb);
 ```
 
 ### utils.flat
