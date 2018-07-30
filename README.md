@@ -29,6 +29,12 @@ Also providing conversion of standard medical data format between each standards
 * [dicom-parser 1.8.1](https://github.com/cornerstonejs/dicomParser/tree/1.8.1)
 
 
+## Installation
+
+```
+npm install medibloc/merklizer
+```
+
 ## Usage
 ### FHIR Resource to Merkle-Patricia-Tree
 
@@ -65,7 +71,7 @@ merkle.createTrie(arr, (e,r) => {
 }
 ```
 
-## Docs
+## API Reference
 
 | Components | Descriptions
 |------------|-----------------------------------
