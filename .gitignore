@@ -25,7 +25,8 @@ npm-debug.log*
 # Temporary ignore
 test
 docs
-example
+example/*
+!example/example.js
 proto/example
 proto/fhir-stu3-google/*_pb.js
 package-lock.json
