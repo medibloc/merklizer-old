@@ -1,0 +1,28 @@
+{
+  "name": "merklizer",
+  "version": "0.0.1",
+  "description": "Convert healthcare data standards to merkle-patricia-tree",
+  "main": "index.js",
+  "scripts": {
+    "start": "babel-node example/example.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Sungjae Jung <sjjung@medibloc.org>",
+  "license": "Apache-2.0",
+  "dependencies": {
+    "dicom-parser": "^1.8.1",
+    "flat": "^4.1.0",
+    "leveldown": "^1.9.0",
+    "merkle-patricia-tree": "^2.3.1",
+    "protobufjs": "^6.8.6",
+    "semver": "^5.5.0"
+  },
+  "devDependencies": {
+    "babel-preset-env": "^1.7.0"
+  },
+  "babel": {
+    "presets": [
+      "env"
+    ]
+  }
+}

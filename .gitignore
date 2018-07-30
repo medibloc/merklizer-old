@@ -1,0 +1,31 @@
+#General
+.DS_Store
+
+# Distribution folders
+dist/*.js
+dist/*.json
+lib
+
+# Dependency directories
+node_modules
+
+# Package generated directories
+leveldb
+
+#IDE directories
+.idea
+.vscode
+
+##Temporary ignore for documentation
+docs/_build
+
+#Logs
+npm-debug.log*
+
+# Temporary ignore
+test
+data
+docs
+example
+proto
+package-lock.json
