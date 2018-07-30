@@ -26,5 +26,6 @@ npm-debug.log*
 test
 docs
 example
-proto
+proto/example
+proto/fhir-stu3-google/*_pb.js
 package-lock.json
