@@ -163,22 +163,3 @@ Please make sure to update tests as appropriate.
 
 ## License
 [Apache-2.0](http://www.apache.org/licenses/LICENSE-2.0)
-
-
-######################
-## Requirements
-* protoc 3.6.0
-
-### To install on Ubuntu and OSX:
-
-`wget https://github.com/google/protobuf/releases/download/v3.6.0/protobuf-all-3.6.0.tar.gz`
-
-### Installation
-`npm install --save merkle-patricia-tree protobufjs dicom-parser`
-
-## Development
-```
-$ virtualenv foobar
-$ . foobar/bin/activate
-$ pip install -e .
-```
