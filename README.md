@@ -19,7 +19,7 @@ Also providing conversion of standard medical data format between each standards
 ```node
 import { utils, fhir, merkle } from 'merklizer';
 
-# let resource = OBJECT_OF_FHIR_RESOURCE;
+// let resource = OBJECT_OF_FHIR_RESOURCE;
 let plain = fhir.filter(resource); # returns filtered object
 let flat = utils.flat(plain); # returns flatted object
 let arr = utils.objectToArray(flat); # returns array
@@ -36,7 +36,7 @@ merkle.createTrie(arr, (e,r) => {
 ```node
 import { utils, dicom, fhir, merkle } from 'merklizer';
 
-# let dicomArray = UINT8ARRAY_OF_DICOM
+// let dicomArray = UINT8ARRAY_OF_DICOM
 let media= dicom.createMedia(dicomArray); # returns media object
 let plain = fhir.filter(media); # returns filtered object
 let flat = utils.flat(plain); # returns flatted object
