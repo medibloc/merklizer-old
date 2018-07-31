@@ -83,20 +83,20 @@ merkle.createTrie(arr, (e,r) => {
 An object is processed as defined [Google's FHIR Protocol Buffers 0.2](https://github.com/google/fhir/tree/v0.2)
 
 #### Parameters
-* `object` **[Object]** An JSON typed FHIR Resource
+* `resource` **[Object]** An JSON typed FHIR Resource
 #### Returns
-* `object` **[Object]** A filtered FHIR Resource
+* `filter` **[Object]** A filtered FHIR Resource
 
 **Examples**
 ```javascript
-const media = {
+const resource = {
   "resourceType":"Media",
   "type": { "value": 1 },
   "content": {
     "data": { "value": "" },
   }
 };
-let filtered = fhir.filter(media);
+let filtered = fhir.filter(resource);
 ```
 
 ### dicom.createMedia
@@ -155,8 +155,8 @@ let obj = {
   key2: {
     keyB: 'valueII'
   },
-  key3: { a: { b: { c: 2 } } }
-}
+  key3: { a: { b: { c: 2 } } },
+};
 let flatted = utils.flat(obj);
 ```
 
