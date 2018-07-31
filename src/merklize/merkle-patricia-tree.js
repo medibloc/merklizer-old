@@ -4,7 +4,7 @@ import utils from '../utils';
 
 // const db = levelup('./leveldb');
 // let trie = new Trie(db);
-let trie = new Trie(null);
+const trie = new Trie(null);
 
 // const createTrie = async (items) => {
 //   // let trie = utils.callRecursive(putItem, items);
@@ -15,10 +15,14 @@ let trie = new Trie(null);
 //   });
 // };
 
+const putObj = (item, next) => {
+  const { key, value } = item;
+
+  trie.put(key, value, e => next(e));
+};
+
 const createTrie = (items, next) => {
-  utils.callRecursive(putObj, items, (e,r) => {
-    return next(e,trie);
-  });
+  utils.callRecursive(putObj, items, e => next(e, trie));
 };
 
 // const putItem = async (item) => {
@@ -47,14 +51,6 @@ const createTrie = (items, next) => {
 //   });
 // };
 
-const putObj = (item, next) => {
-  let key = item.key;
-  let value = item.value;
-
-  trie.put(key, value, (e) => {
-    return next(e);
-  });
-};
 
 // const getItem = async (key) => {
 //   trie.get(key, (e,r) => {
@@ -64,16 +60,12 @@ const putObj = (item, next) => {
 // };
 
 const putItem = (key, value, next) => {
-  trie.put(key, value, (e) => {
-    return next(e);
-  });
+  trie.put(key, value, e => next(e));
 };
 
 
 const getItem = (key, next) => {
-  trie.get(key, (e,r) => {
-    return next(e,r);
-  });
+  trie.get(key, (e, r) => next(e, r));
 };
 
 // const proveTrie = async (trie, items) => {
@@ -83,11 +75,22 @@ const getItem = (key, next) => {
 //   });
 // };
 
-const proveTrie = (trie, items, next) => {
-  trie = trie
-  utils.callRecursive(proveItem, items, (e,r) => {
-    return next(e,trie);
+const proveItem = (item, next) => {
+  const { key } = item;
+
+  Trie.prove(trie, key, (e, r) => {
+    if (e) return next(e, item);
+    return Trie.verifyProof(trie.root, key, r, (err2) => {
+      if (err2) {
+        return next(err2, item);
+      }
+      return next(null, item);
+    });
   });
+};
+
+const proveTrie = (trie, items, next) => {
+  utils.callRecursive(proveItem, items, e => next(e, trie));
 };
 
 // const proveItem = async (item) => {
@@ -106,35 +109,16 @@ const proveTrie = (trie, items, next) => {
 //   });
 // };
 
-const proveItem = (item, next) => {
-  let key = item.key;
-
-  Trie.prove(trie, key, (e,r) => {
-    if (e) return next(e, item);
-    Trie.verifyProof(trie.root, key, r, (e,r) => {
-      if (e) {
-        return next(e, item);
-      } else {
-        return next(null, item);
-      }
-    });
-  });
-};
-
 const prove = (trie, key, next) => {
-  Trie.prove(trie, key, (e,r) => {
-    return next(e,r);
-  });
+  Trie.prove(trie, key, (e, r) => next(e, r));
 };
 
 const verifyProof = (trie, key, proof, next) => {
-  Trie.verifyProof(trie.root, key, proof, (e,r) => {
-    return next(e,r);
-  });
+  Trie.verifyProof(trie.root, key, proof, (e, r) => next(e, r));
 };
 
 export default {
   createTrie,
   proveTrie,
-  getItem
+  getItem,
 };

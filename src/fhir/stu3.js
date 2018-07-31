@@ -4,19 +4,19 @@ import fhir from '../../proto/fhir-stu3-google/pbjs.json';
 const pbjs = protobuf.Root.fromJSON(fhir);
 
 const filter = (obj) => {
-  let Type = pbjs.lookupType(obj.resourceType);
+  const Type = pbjs.lookupType(obj.resourceType);
   // console.log('Type: ', Type);
-  let err = Type.verify(obj);
+  const err = Type.verify(obj);
   // console.log('err: ', err);
   if (err) throw Error(err);
 
-  let msg = Type.create(obj);
+  const msg = Type.create(obj);
   // console.log('msg: ', msg);
-  let buf = Type.encode(msg).finish();
+  const buf = Type.encode(msg).finish();
   // console.log('buf: ', buf);
-  let msgd = Type.decode(buf);
+  const msgd = Type.decode(buf);
   // console.log('msgd: ', msgd);
-  let plain = Type.toObject(msgd, {
+  const plain = Type.toObject(msgd, {
     // enums: String,
     // longs: String,
     // bytes: String,
@@ -31,5 +31,5 @@ const filter = (obj) => {
 };
 
 export default {
-  filter
-}
+  filter,
+};
