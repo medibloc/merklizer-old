@@ -1,12 +1,11 @@
 # Merklizer
 
-Merklizer is a javascript package for dealing healthcare data as Merkle-Patricia-Tree.  
-Also providing conversion of standard medical data format between each standards.  
-(Currently, support DICOM to FHIR only.)
+Merklizer is a JavaScript package for converting healthcare data to Merkle Patricia tree.  
+Merklizer provides consistent conversion between various medical data format standards. (Currently, support DICOM to FHIR only.)  
 
 ## Key Features (version 0.1.0)
 * Transform FHIR Resources to Merkle tree
-  * Support Merkle-Patricia-tree which is described in the [Ethereum's Yellow Paper](https://ethereum.github.io/yellowpaper/paper.pdf)
+  * Support Merkle Patricia tree which is described in the [Ethereum's Yellow Paper](https://ethereum.github.io/yellowpaper/paper.pdf)
 * Validate FHIR Resources
   * Support STU3
   * [Google's FHIR Protocol buffers](https://github.com/google/fhir) is used for validation
@@ -15,7 +14,7 @@ Also providing conversion of standard medical data format between each standards
 
 ## Todo
 * Validate FHIR Resources
-  * Verify Google's FHIR Protocol buffers in node.js
+  * Verify Google's FHIR Protocol buffers in Node.js
   * Confirm MediBloc defined FHIR Protocol buffers
 * Convert DICOM image to FHIR Resource
   * Support to involved all known meta-data in DICOM file
@@ -145,7 +144,7 @@ Flat object's depth
 #### Parameters
 * `obj` **[Object]** An object, which is composed of key and value
 #### Returns
-* `flat` **[Object]** An flatten object
+* `flat` **[Object]** A flatten object
 
 **Examples**
 ```javascript
