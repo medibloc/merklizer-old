@@ -1,4 +1,4 @@
-import { utils, dicom, fhir, merkle } from '../index';
+import { utils, dicom, fhir, merkle } from '../lib/index';
 import fs from 'fs';
 
 // example - condition
