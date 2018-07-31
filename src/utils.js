@@ -9,7 +9,7 @@ const objectToArray = obj => Object.entries(obj)
 
 const callRecursive = (func, obj, next) => {
   const json = Object.values(obj);
-  console.log('json: ', json);
+
   func(json.shift(), (e, r) => {
     if (json.length === 0) {
       return next(e, r);
