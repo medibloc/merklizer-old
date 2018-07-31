@@ -90,11 +90,11 @@ An object is processed as defined [Google's FHIR Protocol Buffers 0.2](https://g
 **Examples**
 ```javascript
 const resource = {
-  "resourceType":"Media",
-  "type": { "value": 1 },
-  "content": {
-    "data": { "value": "" },
-  }
+  resourceType: 'Media',
+  type: { value: 1 },
+  content: {
+    data: { value: '' },
+  },
 };
 let filtered = fhir.filter(resource);
 ```
@@ -171,8 +171,8 @@ Transform object to array
 **Examples**
 ```javascript
 let obj = {
-  {key: "name", value: "Bob"},
-  {key: "email", value: "bob@gmail.com"},
+  name: 'Bob',
+  email: 'bob@gmail.com',
 };
 let array = utils.objectToArray(obj);
 ```
