@@ -51,5 +51,8 @@ const verifyProof = (trie, key, proof, next) => {
 export default {
   createTrie,
   proveTrie,
-  getItem,
+  // putItem,
+  // getItem,
+  // prove,
+  // verifyProof,
 };
