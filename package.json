@@ -1,7 +1,7 @@
 {
   "name": "merklizer",
   "version": "0.1.0",
-  "description": "Convert healthcare data standards to merkle-patricia-tree",
+  "description": "Convert healthcare data standards to Merkle Patricia tree",
   "main": "lib/index.js",
   "scripts": {
     "lint": "eslint src",
