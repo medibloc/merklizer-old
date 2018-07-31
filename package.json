@@ -2,7 +2,7 @@
   "name": "merklizer",
   "version": "0.1.0",
   "description": "Convert healthcare data standards to merkle-patricia-tree",
-  "main": "index.js",
+  "main": "lib/index.js",
   "scripts": {
     "lint": "eslint src",
     "babel": "babel src -d lib --copy-files",
