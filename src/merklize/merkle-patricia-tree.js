@@ -13,14 +13,14 @@ const createTrie = (items, next) => {
   utils.callRecursive(putObj, items, e => next(e, trie));
 };
 
-const putItem = (key, value, next) => {
-  trie.put(key, value, e => next(e));
-};
-
-
-const getItem = (key, next) => {
-  trie.get(key, (e, r) => next(e, r));
-};
+// const putItem = (key, value, next) => {
+//   trie.put(key, value, e => next(e));
+// };
+//
+//
+// const getItem = (key, next) => {
+//   trie.get(key, (e, r) => next(e, r));
+// };
 
 const proveItem = (item, next) => {
   const { key } = item;
@@ -36,17 +36,17 @@ const proveItem = (item, next) => {
   });
 };
 
-const proveTrie = (trie, items, next) => {
-  utils.callRecursive(proveItem, items, e => next(e, trie));
+const proveTrie = (trie1, items, next) => {
+  utils.callRecursive(proveItem, items, e => next(e, trie1));
 };
 
-const prove = (trie, key, next) => {
-  Trie.prove(trie, key, (e, r) => next(e, r));
-};
-
-const verifyProof = (trie, key, proof, next) => {
-  Trie.verifyProof(trie.root, key, proof, (e, r) => next(e, r));
-};
+// const prove = (trie, key, next) => {
+//   Trie.prove(trie, key, (e, r) => next(e, r));
+// };
+//
+// const verifyProof = (trie, key, proof, next) => {
+//   Trie.verifyProof(trie.root, key, proof, (e, r) => next(e, r));
+// };
 
 export default {
   createTrie,

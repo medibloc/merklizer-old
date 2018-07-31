@@ -15,7 +15,10 @@ const createMedia = (uint8array) => {
   const pixelDataElement = dataSet.elements.x7fe00010;
   if (pixelDataElement) {
     pixelData = new Uint8Array(
-      dataSet.byteArray.buffer, pixelDataElement.dataOffset, pixelDataElement.length);
+      dataSet.byteArray.buffer,
+      pixelDataElement.dataOffset,
+      pixelDataElement.length,
+    );
   }
   if (pixelData) {
     media.content.data.value = Buffer.from(pixelData).toString('base64');
