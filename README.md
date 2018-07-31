@@ -35,7 +35,7 @@ npm install medibloc/merklizer
 ```
 
 ## Usage
-### FHIR Resource to Merkle-Patricia-Tree
+### FHIR Resource to Merkle Patricia tree
 
 ```node
 import { utils, fhir, merkle } from 'merklizer';
@@ -52,7 +52,7 @@ merkle.createTrie(arr, (e,r) => {
 }
 ```
 
-### DICOM to Merkle-Patricia-Tree
+### DICOM to Merkle Patricia tree
 
 ```node
 import { utils, dicom, fhir, merkle } from 'merklizer';
@@ -76,7 +76,7 @@ merkle.createTrie(arr, (e,r) => {
 |------------|-----------------------------------
 | fhir | HL7 FHIR related
 | dicom | DICOM related
-| merkle | merkle-patricia-tree related
+| merkle | Merkle Patricia tree related
 | utils | extra functions to deal with object
 
 ### fhir.filter
@@ -100,12 +100,12 @@ let filtered = fhir.filter(resource);
 ```
 
 ### dicom.createMedia
-Transform dicom to Media resource  
+Transform DICOM to Media Resource  
 
 #### Parameters
 * `dicomArray` **[Uint8Array]** A Uint8Array typed DICOM
 #### Returns
-* `media` **[Object]** An Object of Media resource
+* `media` **[Object]** An Object of Media Resource
 
 **Examples**
 ```javascript
@@ -114,7 +114,7 @@ let media = dicom.createMedia(dicomArray);
 ```
 
 ### merkle.createTrie
-Create trie using an array of resource components
+Create trie using an array of Resource components
 
 #### Parameters
 * `items` **[Array]** An array, which is composed of key and value
@@ -126,7 +126,7 @@ merkle.createTrie(items, cb);
 ```
 
 ### merkle.proveTrie
-Prove trie using an array of resource components that is used to create the trie
+Prove trie using an array of Resource components that is used to create the trie
 
 #### Parameters
 * `trie` **[Trie]** A trie to prove
