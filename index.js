@@ -1,7 +1,7 @@
-import Utils from './src/utils';
-import Dicom from './src/dicom/dicom';
-import Fhir from './src/fhir/stu3';
-import Merkle from './src/merklize/merkle-patricia-tree';
+import Utils from './lib/utils';
+import Dicom from './lib/dicom/dicom';
+import Fhir from './lib/fhir/stu3';
+import Merkle from './lib/merklize/merkle-patricia-tree';
 
 export const utils = Utils;
 export const dicom = Dicom;

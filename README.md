@@ -32,7 +32,7 @@ Also providing conversion of standard medical data format between each standards
 ## Installation
 
 ```
-npm install medibloc/merklizer
+npm install merklizer
 ```
 
 ## Usage

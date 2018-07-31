@@ -23,6 +23,7 @@ docs/_build
 npm-debug.log*
 
 # Temporary ignore
+lib
 test
 docs
 example/*

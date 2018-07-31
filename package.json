@@ -5,6 +5,8 @@
   "main": "index.js",
   "scripts": {
     "lint": "eslint src",
+    "babel": "babel src -d lib --copy-files",
+    "build": "npm run babel",
     "start": "babel-node example/example.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
