@@ -1,6 +1,6 @@
 {
   "name": "merklizer",
-  "version": "0.0.1",
+  "version": "0.1.0",
   "description": "Convert healthcare data standards to merkle-patricia-tree",
   "main": "index.js",
   "scripts": {
