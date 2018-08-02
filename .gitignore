@@ -23,11 +23,16 @@ docs/_build
 npm-debug.log*
 
 # Temporary ignore
-!lib
-test
+data
+!data/example
+!data/fhir-stu3-google
 docs
-example/*
+example
 !example/example.js
-proto/example
-proto/fhir-stu3-google/*_pb.js
+!lib
+proto
+!proto/fhir-stu3-google/*.proto
+!proto/fhir-stu3-google/pbjs.json
+!src
+test
 package-lock.json
