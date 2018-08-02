@@ -23,8 +23,9 @@ docs/_build
 npm-debug.log*
 
 # Temporary ignore
-data/dicom
-data/fhir-stu3
+data
+!data/example
+!data/fhir-stu3-google
 docs
 example
 !example/example.js
