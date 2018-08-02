@@ -2,7 +2,7 @@ import { utils, dicom, fhir, merkle } from '../lib/index';
 import fs from 'fs';
 
 // example - condition
-const condition_example = './data/fhir-stu3-google/condition/condition-example-google.json';
+const condition_example = './data/fhir-stu3-google/example/condition-example-google.json';
 
 fs.readFile(condition_example, 'utf8', (e,r) => {
   if (e) throw e;
@@ -41,7 +41,7 @@ fs.readFile(condition_example, 'utf8', (e,r) => {
 
 
 // // example - DICOM => media
-const dicom_example = './data/dicom/ctimage.dcm';
+const dicom_example = './data/example/ctimage.dcm';
 
 fs.readFile(dicom_example, (e,r) => {
   if (e) throw e;
