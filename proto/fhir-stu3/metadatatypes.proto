@@ -1,0 +1,420 @@
+//    Copyright 2018 MediBloc Inc.
+//
+//    Licensed under the Apache License, Version 2.0 (the "License");
+//    you may not use this file except in compliance with the License.
+//    You may obtain a copy of the License at
+//
+//        https://www.apache.org/licenses/LICENSE-2.0
+//
+//    Unless required by applicable law or agreed to in writing, software
+//    distributed under the License is distributed on an "AS IS" BASIS,
+//    WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+//    See the License for the specific language governing permissions and
+//    limitations under the License.
+
+syntax = "proto3";
+
+package medibloc.fhir.stu3.proto;
+
+import "proto/fhir-stu3/datatypes.proto";
+
+// See http://hl7.org/fhir/STU3/element.html
+message Element {
+  string id = 1;
+  repeated Extension extension = 2;
+}
+
+// See http://hl7.org/fhir/STU3/backboneelement.html
+message BackboneElement {
+  repeated Extension modifier_extension = 1;
+}
+
+// See http://hl7.org/fhir/STU3/resource.html
+message Resource {
+  string id = 1;
+  Meta meta = 2;
+  string implicit_rules = 3;
+  string language = 4;
+}
+
+// See http://hl7.org/fhir/STU3/metadatatypes.html#contactdetail
+message ContactDetail {
+// Element: id, extension
+  string id = 1;
+  repeated Extension extension = 2;
+  string name = 3;
+  repeated ContactPoint telecom = 4;
+}
+
+// See http://hl7.org/fhir/STU3/metadatatypes.html#contributor
+message Contributor {
+// Element: id, extension
+  string id = 1;
+  repeated Extension extension = 2;
+  string type = 3;
+  string name = 4;
+  repeated ContactDetail contact = 5;
+}
+
+// See http://hl7.org/fhir/STU3/metadatatypes.html#datarequirement
+message DataRequirement {
+// Element: id, extension
+  string id = 1;
+  repeated Extension extension = 2;
+  string type = 3;
+  repeated string profile = 4;
+  repeated string must_support = 5;
+  message CodeFilter {
+    string path = 1;
+    oneof value_set {
+      string value_set_string = 2;
+      Reference value_set_reference = 3;
+    }
+    repeated string value_code = 4;
+    repeated Coding value_coding = 5;
+    repeated CodeableConcept value_codeable_concept = 6;
+  }
+  repeated CodeFilter code_filter = 6;
+  message DateFilter {
+    string path = 1;
+    oneof value {
+      string value_date_time = 2;
+      Period period = 3;
+      Duration duration = 4;
+    }
+  }
+  repeated DateFilter date_filter = 7;
+}
+
+// See http://hl7.org/fhir/STU3/metadatatypes.html#parameterdefinition
+message ParameterDefinition {
+// Element: id, extension
+  string id = 1;
+  repeated Extension extension = 2;
+  string name = 3;
+  string use = 4;
+  sint32 min = 5;
+  string max = 6;
+  string documentation = 7;
+  string type = 8;
+  Reference profile = 9;
+}
+
+// See http://hl7.org/fhir/STU3/metadatatypes.html#relatedartifact
+message RelatedArtifact {
+// Element: id, extension
+  string id = 1;
+  repeated Extension extension = 2;
+  string type = 3;
+  string display = 4;
+  string citation = 5;
+  string url = 6;
+  Attachment document = 7;
+  Reference resource = 8;
+}
+
+// See http://hl7.org/fhir/STU3/metadatatypes.html#triggerdefinition
+message TriggerDefinition {
+// Element: id, extension
+  string id = 1;
+  repeated Extension extension = 2;
+  string type = 3;
+  string event_name = 4;
+  oneof event_timing {
+    Timing event_timing_timing = 5;
+    Reference event_timing_reference = 6;
+    string event_timing_date = 7;
+    string event_timing_date_time = 8;
+  }
+  DataRequirement event_data = 9;
+}
+
+// See http://hl7.org/fhir/STU3/metadatatypes.html#usagecontext
+message UsageContext {
+// Element: id, extension
+  string id = 1;
+  repeated Extension extension = 2;
+  Coding code = 3;
+  oneof value {
+    CodeableConcept value_codeable_concept = 4;
+    Quantity value_quantity = 5;
+    Range value_range = 6;
+  }
+}
+
+// See http://hl7.org/fhir/STU3/narrative.html#Narrative
+message Narrative {
+// Element: id, extension
+  string id = 1;
+  repeated Extension extension = 2;
+  string status = 3;
+  string div = 4;
+}
+
+// See http://hl7.org/fhir/STU3/elementdefinition.html#ElementDefinition
+message ElementDefinition {
+// Element: id, extension
+  string id = 1;
+  repeated Extension extension = 2;
+  string path = 3;
+  repeated string representation = 4;
+  string slice_name = 5;
+  string label = 6;
+  repeated Coding code = 7;
+  message Slicing {
+    message Discriminator {
+      string type = 1;
+      string path = 2;
+    }
+    repeated Discriminator discriminator = 1;
+    string description = 2;
+    bool ordered = 3;
+    string rules = 4;
+  }
+  Slicing slicing = 8;
+  string short = 9;
+  string definition = 10;
+  string comment = 11;
+  string requirements = 12;
+  repeated string alias = 13;
+  uint32 min = 14;
+  string max = 15;
+  message Base {
+    string path = 1;
+    uint32 min = 2;
+    string max = 3;
+  }
+  Base base = 16;
+  string content_reference = 17;
+  message TypeRef {
+    string code = 1;
+    string profile = 2;
+    string target_profile = 3;
+    repeated string aggregation = 4;
+    string versioning = 5;
+  }
+  repeated TypeRef type = 18;
+  oneof default_value {
+  // type of *
+    bytes default_value_base64_binary = 19;
+    bool default_value_boolean = 20;
+    string default_value_code = 21;
+    string default_value_date = 22;
+    string default_value_date_time = 23;
+    double default_value_decimal = 24;
+    string default_value_id = 25;
+    string default_value_instant = 26;
+    sint32 default_value_integer = 27;
+    string default_value_markdown = 28;
+    string default_value_oid = 29;
+    uint32 default_value_positive_int = 30;
+    string default_value_string = 31;
+    string default_value_time = 32;
+    uint32 default_value_unsigned_int = 33;
+    string default_value_uri = 34;
+    Address default_value_address = 35;
+    Age default_value_age = 36;
+    Annotation default_value_annotation = 37;
+    Attachment default_value_attachment = 38;
+    CodeableConcept default_value_codeable_concept = 39;
+    Coding default_value_coding = 40;
+    ContactPoint default_value_contact_point = 41;
+    Count default_value_count = 42;
+    Distance default_value_distance = 43;
+    Duration default_value_duration = 44;
+    HumanName default_value_human_name = 45;
+    Identifier default_value_identifier = 46;
+    Money default_value_money = 47;
+    Period default_value_period = 48;
+    Quantity default_value_quantity = 49;
+    Range default_value_range = 50;
+    Ratio default_value_ratio = 51;
+    Reference default_value_reference = 52;
+    SampledData default_value_sampled_data = 53;
+    Signature default_value_signature = 54;
+    Timing default_value_timing = 55;
+    Meta default_value_meta = 56;
+  }
+  string meaning_when_missing = 57;
+  string order_meaning = 58;
+  oneof fixed {
+  // type of *
+    bytes fixed_base64_binary = 59;
+    bool fixed_boolean = 60;
+    string fixed_code = 61;
+    string fixed_date = 62;
+    string fixed_date_time = 63;
+    double fixed_decimal = 64;
+    string fixed_id = 65;
+    string fixed_instant = 66;
+    sint32 fixed_integer = 67;
+    string fixed_markdown = 68;
+    string fixed_oid = 69;
+    uint32 fixed_positive_int = 70;
+    string fixed_string = 71;
+    string fixed_time = 72;
+    uint32 fixed_unsigned_int = 73;
+    string fixed_uri = 74;
+    Address fixed_address = 75;
+    Age fixed_age = 76;
+    Annotation fixed_annotation = 77;
+    Attachment fixed_attachment = 78;
+    CodeableConcept fixed_codeable_concept = 79;
+    Coding fixed_coding = 80;
+    ContactPoint fixed_contact_point = 81;
+    Count fixed_count = 82;
+    Distance fixed_distance = 83;
+    Duration fixed_duration = 84;
+    HumanName fixed_human_name = 85;
+    Identifier fixed_identifier = 86;
+    Money fixed_money = 87;
+    Period fixed_period = 88;
+    Quantity fixed_quantity = 89;
+    Range fixed_range = 90;
+    Ratio fixed_ratio = 91;
+    Reference fixed_reference = 92;
+    SampledData fixed_sampled_data = 93;
+    Signature fixed_signature = 94;
+    Timing fixed_timing = 95;
+    Meta fixed_meta = 96;
+  }
+  oneof pattern {
+  // type of *
+    bytes pattern_base64_binary = 97;
+    bool pattern_boolean = 98;
+    string pattern_code = 99;
+    string pattern_date = 100;
+    string pattern_date_time = 101;
+    double pattern_decimal = 102;
+    string pattern_id = 103;
+    string pattern_instant = 104;
+    sint32 pattern_integer = 105;
+    string pattern_markdown = 106;
+    string pattern_oid = 107;
+    uint32 pattern_positive_int = 108;
+    string pattern_string = 109;
+    string pattern_time = 110;
+    uint32 pattern_unsigned_int = 111;
+    string pattern_uri = 112;
+    Address pattern_address = 113;
+    Age pattern_age = 114;
+    Annotation pattern_annotation = 115;
+    Attachment pattern_attachment = 116;
+    CodeableConcept pattern_codeable_concept = 117;
+    Coding pattern_coding = 118;
+    ContactPoint pattern_contact_point = 119;
+    Count pattern_count = 120;
+    Distance pattern_distance = 121;
+    Duration pattern_duration = 122;
+    HumanName pattern_human_name = 123;
+    Identifier pattern_identifier = 124;
+    Money pattern_money = 125;
+    Period pattern_period = 126;
+    Quantity pattern_quantity = 127;
+    Range pattern_range = 128;
+    Ratio pattern_ratio = 129;
+    Reference pattern_reference = 130;
+    SampledData pattern_sampled_data = 131;
+    Signature pattern_signature = 132;
+    Timing pattern_timing = 133;
+    Meta pattern_meta = 134;
+  }
+  message Example {
+    string label = 1;
+    oneof value {
+    // type of *
+      bytes value_base64_binary = 2;
+      bool value_boolean = 3;
+      string value_code = 4;
+      string value_date = 5;
+      string value_date_time = 6;
+      double value_decimal = 7;
+      string value_id = 8;
+      string value_instant = 9;
+      sint32 value_integer = 10;
+      string value_markdown = 11;
+      string value_oid = 12;
+      uint32 value_positive_int = 13;
+      string value_string = 14;
+      string value_time = 15;
+      uint32 value_unsigned_int = 16;
+      string value_uri = 17;
+      Address value_address = 18;
+      Age value_age = 19;
+      Annotation value_annotation = 20;
+      Attachment value_attachment = 21;
+      CodeableConcept value_codeable_concept = 22;
+      Coding value_coding = 23;
+      ContactPoint value_contact_point = 24;
+      Count value_count = 25;
+      Distance value_distance = 26;
+      Duration value_duration = 27;
+      HumanName value_human_name = 28;
+      Identifier value_identifier = 29;
+      Money value_money = 30;
+      Period value_period = 31;
+      Quantity value_quantity = 32;
+      Range value_range = 33;
+      Ratio value_ratio = 34;
+      Reference value_reference = 35;
+      SampledData value_sampled_data = 36;
+      Signature value_signature = 37;
+      Timing value_timing = 38;
+      Meta value_meta = 39;
+    }
+  }
+  repeated Example example = 135;
+  oneof min_value {
+    string min_value_date = 136;
+    string min_value_date_time = 137;
+    string min_value_instant = 138;
+    string min_value_time = 139;
+    double min_value_decimal = 140;
+    sint32 min_value_integer = 141;
+    uint32 min_value_positive_int = 142;
+    uint32 min_value_unsigned_int = 143;
+    Quantity min_value_quantity = 144;
+  }
+  oneof max_value {
+    string max_value_date = 145;
+    string max_value_date_time = 146;
+    string max_value_instant = 147;
+    string max_value_time = 148;
+    double max_value_decimal = 149;
+    sint32 max_value_integer = 150;
+    uint32 max_value_positive_int = 151;
+    uint32 max_value_unsigned_int = 152;
+    Quantity max_value_quantity = 153;
+  }
+  sint32 max_length = 154;
+  repeated string condition = 155;
+  message Constraint {
+    string key = 1;
+    string requirements = 2;
+    string severity = 3;
+    string human = 4;
+    string expression = 5;
+    string xpath = 6;
+    string source = 7;
+  }
+  repeated Constraint constraint = 156;
+  bool must_support = 157;
+  bool is_modifier = 158;
+  bool is_summary = 159;
+  message ElementDefinitionBinding {
+    string strength = 1;
+    string description = 2;
+    oneof value_set {
+      string value_set_uri = 3;
+      Reference value_set_reference = 4;
+    }
+  }
+  ElementDefinitionBinding binding = 160;
+  message Mapping {
+    string identity = 1;
+    string language = 2;
+    string map = 3;
+    string comment = 4;
+  }
+  repeated Mapping mapping = 161;
+}

@@ -1,0 +1,384 @@
+//    Copyright 2018 MediBloc Inc.
+//
+//    Licensed under the Apache License, Version 2.0 (the "License");
+//    you may not use this file except in compliance with the License.
+//    You may obtain a copy of the License at
+//
+//        https://www.apache.org/licenses/LICENSE-2.0
+//
+//    Unless required by applicable law or agreed to in writing, software
+//    distributed under the License is distributed on an "AS IS" BASIS,
+//    WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+//    See the License for the specific language governing permissions and
+//    limitations under the License.
+
+syntax = "proto3";
+
+package medibloc.fhir.stu3.proto;
+
+// See http://hl7.org/fhir/STU3/datatypes.html#attachment
+message Attachment {
+// Element: id, extension
+  string id = 1;
+  repeated Extension extension = 2;
+  string content_type = 3;
+  string language = 4;
+  bytes data = 5;
+  string url = 6;
+  uint32 size = 7;
+  bytes hash = 8;
+  string title = 9;
+  string creation = 10;
+}
+
+// See http://hl7.org/fhir/STU3/datatypes.html#codesystem
+message Coding {
+// Element: id, extension
+  string id = 1;
+  repeated Extension extension = 2;
+  string system = 3;
+  string version = 4;
+  string code = 5;
+  string display = 6;
+  bool user_selected = 7;
+}
+
+// See http://hl7.org/fhir/STU3/datatypes.html#codeableconcept
+message CodeableConcept {
+// Element: id, extension
+  string id = 1;
+  repeated Extension extension = 2;
+  repeated Coding coding = 3;
+  string text = 4;
+}
+
+// See http://hl7.org/fhir/STU3/datatypes.html#quantity
+message Quantity {
+// Element: id, extension
+  string id = 1;
+  repeated Extension extension = 2;
+  double value = 3;
+  string comparator = 4;
+  string unit = 5;
+  string system = 6;
+  string code = 7;
+}
+
+// See http://hl7.org/fhir/STU3/datatypes.html#QuantityVariations
+message Age {
+// Element: id, extension
+  string id = 1;
+  repeated Extension extension = 2;
+  double value = 3;
+  string comparator = 4;
+  string unit = 5;
+  string system = 6;
+  string code = 7;
+}
+message Count {
+// Element: id, extension
+  string id = 1;
+  repeated Extension extension = 2;
+  double value = 3;
+  string comparator = 4;
+  string unit = 5;
+  string system = 6;
+  string code = 7;
+}
+message Distance {
+// Element: id, extension
+  string id = 1;
+  repeated Extension extension = 2;
+  double value = 3;
+  string comparator = 4;
+  string unit = 5;
+  string system = 6;
+  string code = 7;
+}
+message Duration {
+// Element: id, extension
+  string id = 1;
+  repeated Extension extension = 2;
+  double value = 3;
+  string comparator = 4;
+  string unit = 5;
+  string system = 6;
+  string code = 7;
+}
+message Money {
+// Element: id, extension
+  string id = 1;
+  repeated Extension extension = 2;
+  double value = 3;
+  string comparator = 4;
+  string unit = 5;
+  string system = 6;
+  string code = 7;
+}
+message SimpleQuantity {
+// Element: id, extension
+  string id = 1;
+  repeated Extension extension = 2;
+  double value = 3;
+  string unit = 4;
+  string system = 5;
+  string code = 6;
+}
+
+// See http://hl7.org/fhir/STU3/datatypes.html#range
+message Range {
+// Element: id, extension
+  string id = 1;
+  repeated Extension extension = 2;
+  SimpleQuantity low = 3;
+  SimpleQuantity high = 4;
+}
+
+// See http://hl7.org/fhir/STU3/datatypes.html#ratio
+message Ratio {
+// Element: id, extension
+  string id = 1;
+  repeated Extension extension = 2;
+  Quantity numerator = 3;
+  Quantity denominator = 4;
+}
+
+// See http://hl7.org/fhir/STU3/datatypes.html#period
+message Period {
+// Element: id, extension
+  string id = 1;
+  repeated Extension extension = 2;
+  string start = 3;
+  string end = 4;
+}
+
+// See http://hl7.org/fhir/STU3/datatypes.html#sampleddata
+message SampledData {
+// Element: id, extension
+  string id = 1;
+  repeated Extension extension = 2;
+  SimpleQuantity origin = 3;
+  double period = 4;
+  double factor = 5;
+  double lower_limit = 6;
+  double upper_limit = 7;
+  uint32 dimensions = 8;
+  string data = 9;
+}
+
+// See http://hl7.org/fhir/STU3/datatypes.html#identifier
+message Identifier {
+// Element: id, extension
+  string id = 1;
+  repeated Extension extension = 2;
+  string use = 3;
+  CodeableConcept type = 4;
+  string system = 5;
+  string value = 6;
+  Period period = 7;
+  Reference assigner = 8;
+}
+
+// See http://hl7.org/fhir/STU3/datatypes.html#humanname
+message HumanName {
+// Element: id, extension
+  string id = 1;
+  repeated Extension extension = 2;
+  string use = 3;
+  string text = 4;
+  string family = 5;
+  repeated string given = 6;
+  repeated string prefix = 7;
+  repeated string suffix = 8;
+  Period period = 9;
+}
+
+// See http://hl7.org/fhir/STU3/datatypes.html#address
+message Address {
+// Element: id, extension
+  string id = 1;
+  repeated Extension extension = 2;
+  string use = 3;
+  string type = 4;
+  string text = 5;
+  repeated string line = 6;
+  string city = 7;
+  string district = 8;
+  string state = 9;
+  string postal_code = 10;
+  string country = 11;
+  Period period = 12;
+}
+
+// See http://hl7.org/fhir/STU3/datatypes.html#contactpoint
+message ContactPoint {
+// Element: id, extension
+  string id = 1;
+  repeated Extension extension = 2;
+  string system = 3;
+  string value = 4;
+  string use = 5;
+  uint32 rank = 6;
+  Period period = 7;
+}
+
+// See http://hl7.org/fhir/STU3/datatypes.html#timing
+message Timing {
+// Element: id, extension
+  string id = 1;
+  repeated Extension extension = 2;
+  repeated string event = 3;
+  message Repeat {
+    oneof bounds {
+      Duration bound_duration = 1;
+      Range bound_range = 2;
+      Period bound_period = 3;
+    }
+    sint32 count = 4;
+    sint32 count_max = 5;
+    double duration = 6;
+    double duration_max = 7;
+    string duration_unit = 8;
+    sint32 frequency = 9;
+    sint32 frequency_max = 10;
+    double period = 11;
+    double period_max = 12;
+    string period_unit = 13;
+    repeated string day_of_week = 14;
+    repeated string time_of_day = 15;
+    repeated string when = 16;
+    uint32 offset = 17;
+  }
+  Repeat repeat = 4;
+  CodeableConcept code = 5;
+}
+
+// See http://hl7.org/fhir/STU3/datatypes.html#signature
+message Signature {
+// Element: id, extension
+  string id = 1;
+  repeated Extension extension = 2;
+  repeated Coding type = 3;
+  string when = 4;
+  oneof who {
+    string who_uri = 5;
+    Reference who_reference = 6;
+  }
+  oneof on_behalf_of {
+    string on_behalf_of_uri = 7;
+    Reference on_behalf_of_reference = 8;
+  }
+  string content_type = 9;
+  bytes blob = 10;
+}
+
+// See http://hl7.org/fhir/STU3/datatypes.html#annotation
+message Annotation {
+// Element: id, extension
+  string id = 1;
+  repeated Extension extension = 2;
+  oneof author {
+    Reference author_reference = 3;
+    string author_string = 4;
+  }
+  string time = 5;
+  string text = 6;
+}
+
+// See http://hl7.org/fhir/STU3/dosage.html#Dosage
+message Dosage {
+// Element: id, extension
+  string id = 1;
+  repeated Extension extension = 2;
+  sint32 sequence = 3;
+  string text = 4;
+  repeated CodeableConcept additional_instruction = 5;
+  string patient_instruction = 6;
+  Timing timing = 7;
+  oneof as_needed {
+    bool as_needed_boolean = 8;
+    CodeableConcept as_needed_codeable_concept = 9;
+  }
+  CodeableConcept site = 10;
+  CodeableConcept route = 11;
+  CodeableConcept method = 12;
+  oneof dose {
+    Range dose_range = 13;
+    SimpleQuantity dose_quantity = 14;
+  }
+  Ratio max_dose_per_period = 15;
+  SimpleQuantity max_dose_per_administration = 16;
+  SimpleQuantity max_dose_per_lifetime = 17;
+  oneof rate {
+    Ratio rate_ratio = 18;
+    Range rate_range = 19;
+    SimpleQuantity rate_quantity = 20;
+  }
+}
+
+// See http://hl7.org/fhir/STU3/resource.html#Meta
+message Meta {
+// Element: id, extension
+  string id = 1;
+  repeated Extension extension = 2;
+  string version_id = 3;
+  string last_updated = 4;
+  repeated string profile = 5;
+  repeated Coding security = 6;
+  repeated Coding tag = 7;
+}
+
+// See http://hl7.org/fhir/STU3/extensibility.html#Extension
+message Extension {
+// Element: id, extension
+  string id = 1;
+  repeated Extension extension = 2;
+  string url = 3;
+  oneof value {
+  // type of *
+    sint32 value_integer = 4;
+    uint32 value_unsigned_int = 5;
+    uint32 value_positive_int = 6;
+    double value_decimal = 7;
+    string value_date_time = 8;
+    string value_date = 9;
+    string value_time = 10;
+    int64 value_instant = 11;
+    string value_string = 12;
+    string value_uri = 13;
+    string value_oid = 14;
+    string value_uuid = 15;
+    string value_id = 16;
+    bool value_boolean = 17;
+    string value_code = 18;
+    string value_markdown = 19;
+    bytes value_base64_binary = 20;
+    Coding value_coding = 21;
+    CodeableConcept value_codeable_concept = 22;
+    Attachment value_attachment = 23;
+    Identifier value_identifier = 24;
+    Quantity value_quantity = 25;
+    SampledData value_sampled_data = 26;
+    Range value_range = 27;
+    Period value_period = 28;
+    Ratio value_ratio = 29;
+    HumanName value_human_name = 30;
+    Address value_address = 31;
+    ContactPoint value_contact_point = 32;
+    Timing value_timing = 33;
+    Reference value_reference = 34;
+    Annotation value_annotation = 35;
+    Signature value_signature = 36;
+    Meta value_meta = 37;
+  }
+}
+
+// See http://hl7.org/fhir/STU3/references.html#Reference
+message Reference {
+// Element: id, extension
+  string id = 1;
+  repeated Extension extension = 2;
+  string reference = 3;
+  Identifier identifier = 4;
+  string display = 5;
+}
