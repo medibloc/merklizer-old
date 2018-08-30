@@ -30,6 +30,8 @@ example
 !example/example.js
 !lib
 proto
+!proto/fhir-stu3-google/*.proto
+!proto/fhir-stu3-google/pbjs.json
 !proto/fhir-stu3/*.proto
 !proto/fhir-stu3/stu3.json
 !src
