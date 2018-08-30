@@ -25,7 +25,6 @@ npm-debug.log*
 # Temporary ignore
 data
 !data/example
-!data/fhir-stu3-google
 docs
 example
 !example/example.js
@@ -36,3 +35,4 @@ proto
 !src
 test
 package-lock.json
+proto.sh
