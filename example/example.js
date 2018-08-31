@@ -2,15 +2,15 @@ import { utils, dicom, fhir, merkle } from '../lib/index';
 import fs from 'fs';
 
 // example - condition
-const condition_example = './data/fhir-stu3-google/example/condition-example-google.json';
+const resource_example = './data/example/fhir-stu3/condition-example.json';
 
-fs.readFile(condition_example, 'utf8', (e,r) => {
+fs.readFile(resource_example, 'utf8', (e,r) => {
   if (e) throw e;
 
-  let condition = JSON.parse(r);
-  // console.log('read: ', condition);
+  let resource = JSON.parse(r);
+  // console.log('read: ', resource);
 
-  var plain = fhir.filter(condition);
+  var plain = fhir.filter(resource);
   // console.log('plain: ', plain);
 
   var flat = utils.flat(plain);
@@ -41,7 +41,7 @@ fs.readFile(condition_example, 'utf8', (e,r) => {
 
 
 // // example - DICOM => media
-const dicom_example = './data/example/ctimage.dcm';
+const dicom_example = './data/example/temp/ctimage.dcm';
 
 fs.readFile(dicom_example, (e,r) => {
   if (e) throw e;

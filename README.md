@@ -6,16 +6,14 @@ Merklizer provides consistent conversion between various medical data format sta
 ## Key Features (version 0.1.0)
 * Transform FHIR Resources to Merkle tree
   * Support Merkle Patricia tree which is described in the [Ethereum's Yellow Paper](https://ethereum.github.io/yellowpaper/paper.pdf)
-* Validate FHIR Resources
+* Validate FHIR Resources by [MediBloc defined FHIR Protocol buffers](https://github.com/medibloc/merklizer/tree/master/proto/fhir-stu3)
   * Support STU3
-  * [Google's FHIR Protocol buffers](https://github.com/google/fhir) is used for validation
 * Convert DICOM image to FHIR Resource
   * Support DICOM image to Media Resource
 
 ## Todo
 * Validate FHIR Resources
-  * Verify Google's FHIR Protocol buffers in Node.js
-  * Confirm MediBloc defined FHIR Protocol buffers
+  * Support Array of Resource type (e.g. contained in [DomainResource](http://hl7.org/fhir/STU3/domainresource.html#DomainResource) Resource)
 * Convert DICOM image to FHIR Resource
   * Support to involved all known meta-data in DICOM file
 
@@ -80,7 +78,7 @@ merkle.createTrie(arr, (e,r) => {
 | utils | extra functions to deal with object
 
 ### fhir.filter
-An object is processed as defined [Google's FHIR Protocol Buffers 0.2](https://github.com/google/fhir/tree/v0.2)
+An object is processed as defined [MediBloc FHIR Protocol buffers](https://github.com/medibloc/merklizer/tree/master/proto/fhir-stu3)
 
 #### Parameters
 * `resource` **[Object]** An JSON typed FHIR Resource

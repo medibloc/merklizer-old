@@ -1,5 +1,5 @@
 import protobuf from 'protobufjs';
-import fhir from '../../proto/fhir-stu3-google/pbjs.json';
+import fhir from '../../proto/fhir-stu3/stu3.json';
 
 const pbjs = protobuf.Root.fromJSON(fhir);
 
