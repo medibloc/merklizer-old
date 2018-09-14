@@ -3,7 +3,7 @@
 Merklizer is a JavaScript package for converting healthcare data to Merkle Patricia tree.  
 Merklizer provides consistent conversion between various medical data format standards. (Currently, support DICOM to FHIR only.)  
 
-## Key Features (version 0.2.0)
+## Key Features (version 0.2.1)
 * Transform FHIR Resources to Merkle tree
   * Support Merkle Patricia tree which is described in the [Ethereum's Yellow Paper](https://ethereum.github.io/yellowpaper/paper.pdf)
 * Validate FHIR Resources by [MediBloc defined FHIR Protocol buffers](https://github.com/medibloc/merklizer/tree/master/proto/fhir-stu3)
@@ -12,8 +12,8 @@ Merklizer provides consistent conversion between various medical data format sta
   * Support DICOM image to Media Resource
 
 ## Todo
-* Validate FHIR Resources
-  * Support Array of Resource type (e.g. contained in [DomainResource](http://hl7.org/fhir/STU3/domainresource.html#DomainResource) Resource)
+* Auto-generate Protocol buffers
+  * Support Base Resources in HL7 FHIR STU3
 * Convert DICOM image to FHIR Resource
   * Support to involved all known meta-data in DICOM file
 
