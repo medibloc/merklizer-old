@@ -9,9 +9,7 @@ const filter = (obj) => {
   if (err) throw Error(err);
 
   const msg = Type.create(obj);
-  const buf = Type.encode(msg).finish();
-  const msgd = Type.decode(buf);
-  const plain = Type.toObject(msgd, {
+  const plain = Type.toObject(msg, {
     // enums: String,
     // longs: String,
     // bytes: String,
@@ -20,6 +18,39 @@ const filter = (obj) => {
     // objects: true,
     // oneofs: true
   });
+
+  switch (obj.resourceType) {
+    // Bundle - entry.resource, entry.response.outcome
+    // repeated entry
+    case 'Bundle':
+      if (msg.entry && msg.entry.length > 0) {
+        msg.entry.forEach((o, i) => {
+          if (o.resource) {
+            plain.entry[i].resource = filter(o.resource);
+          }
+          if (o.response.outcome) {
+            plain.entry[i].response.outcome = filter(o.response.outcome);
+          }
+        });
+      }
+      break;
+    // Parameters - parameter.resource
+    // repeated parameter
+    case 'Parameters':
+      if (msg.parameter && msg.parameter.length > 0) {
+        msg.parameter.forEach((o, i) => {
+          if (o.resource) {
+            plain.parameter[i].resource = filter(o.resource);
+          }
+        });
+      }
+      break;
+    // repeated contained
+    default:
+      if (msg.contained && msg.contained.length > 0) {
+        plain.contained = msg.contained.map(filter);
+      }
+  }
 
   return plain;
 };
