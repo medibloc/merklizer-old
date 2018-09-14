@@ -2,9 +2,9 @@ import * as dicomParser from 'dicom-parser';
 
 const media = {
   resourceType: 'Media',
-  type: { value: 1 },
+  type: 'photo',
   content: {
-    data: { value: '' },
+    data: '',
   },
 };
 
@@ -21,7 +21,7 @@ const createMedia = (uint8array) => {
     );
   }
   if (pixelData) {
-    media.content.data.value = Buffer.from(pixelData).toString('base64');
+    media.content.data = Buffer.from(pixelData).toString('base64');
   }
 
   return media;

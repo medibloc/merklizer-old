@@ -40,7 +40,7 @@ fs.readFile(resource_example, 'utf8', (e,r) => {
 });
 
 
-// // example - DICOM => media
+// example - DICOM => media
 const dicom_example = './data/example/temp/ctimage.dcm';
 
 fs.readFile(dicom_example, (e,r) => {
